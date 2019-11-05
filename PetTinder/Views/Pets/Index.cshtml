@@ -1,8 +1,9 @@
 @{
     ViewData["Title"] = "Take Meowt";
 }
-@using PetTinder.Models;
-@model List<PetTinder.Models.Pet>;
+@using PetTinder.Models
+@using System.IO
+@model List<PetTinder.Models.Pet>
 
 <!DOCTYPE html>
 <html>
@@ -64,8 +65,6 @@
     </div>
 
   </section>
-
-
 
 <script src="tinderesque.js"></script>
 <script>
