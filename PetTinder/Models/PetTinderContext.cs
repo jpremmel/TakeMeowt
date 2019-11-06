@@ -15,7 +15,7 @@ namespace PetTinder.Models
             base.OnModelCreating(builder);
             builder.Entity<Pet>()
                 .HasData(
-                    new Pet { PetId = 1, Name = "Sylvie", Species = "Dog", Breed = "Shih-tzu mix", Age = 6, Gender = "Female", Bio = "Grey, lanky, fluffy, distinct underbite. Favorite things: Chicken, tortellini, beach, snow, her toys, being cozy. Least favorite things: Grooming, vet visits, guitars, being cold, being alone.", LookingFor = "A cuddle buddy who will never leave my side.", Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
+                    new Pet { PetId = 1, Name = "Sylvie", Species = "Dog", Breed = "Shih-tzu mix", Age = 6, Gender = "Female", Bio = "Grey, lanky, fluffy, distinct underbite. Favorite things: Chicken, tortellini, beach, snow, her toys, being cozy. Least favorite things: Grooming, vet visits, guitars, being cold, being alone.", LookingFor = "A cuddle buddy who will never leave my side.", Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg", Photo2 = "uploads/sylvie1/20190604_125610.jpg", Photo3 = "uploads/sylvie1/20170531_140539.jpg", Photo4 = "uploads/sylvie1/20170531_140534.jpg" },
 
                     new Pet { PetId = 2, Name = "Bridget", Species = "Dog", Breed = "Shih-tzu", Age = 7, Gender = "Female", Bio = "lazy bum. favorite things: yogurt, cheese, carrots, sleep. least favorite things: grooming, vet visits, raspberries (not the food), being alone.", LookingFor = "", Photo1 = "uploads/bridget2/bridget-jason.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
 
