@@ -9,8 +9,8 @@ using PetTinder.Models;
 namespace PetTinder.Migrations
 {
     [DbContext(typeof(PetTinderContext))]
-    [Migration("20191106002341_PictureStuff")]
-    partial class PictureStuff
+    [Migration("20191106202537_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -203,8 +203,6 @@ namespace PetTinder.Migrations
 
                     b.Property<string>("Species");
 
-                    b.Property<byte[]>("TestPhoto1");
-
                     b.Property<string>("UserId");
 
                     b.HasKey("PetId");
@@ -221,7 +219,12 @@ namespace PetTinder.Migrations
                             Bio = "Grey, lanky, fluffy, distinct underbite. Favorite things: Chicken, tortellini, beach, snow, her toys, being cozy. Least favorite things: Grooming, vet visits, guitars, being cold, being alone.",
                             Breed = "Shih-tzu mix",
                             Gender = "Female",
+                            LookingFor = "A cuddle buddy who will never leave my side.",
                             Name = "Sylvie",
+                            Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg",
+                            Photo2 = "uploads/sylvie1/20190604_125610.jpg",
+                            Photo3 = "uploads/sylvie1/20170531_140539.jpg",
+                            Photo4 = "uploads/sylvie1/20170531_140534.jpg",
                             Species = "Dog"
                         },
                         new
@@ -231,7 +234,12 @@ namespace PetTinder.Migrations
                             Bio = "lazy bum. favorite things: yogurt, cheese, carrots, sleep. least favorite things: grooming, vet visits, raspberries (not the food), being alone.",
                             Breed = "Shih-tzu",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Bridget",
+                            Photo1 = "uploads/bridget2/bridget-jason.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -241,7 +249,12 @@ namespace PetTinder.Migrations
                             Bio = "Floofy McCuddlebug, Diva. Favorite Things: naps, snacks, being the little spoon, screaming. Least Favorite Things: Toe touches, Watching his brother get affection, Being hungry",
                             Breed = "Long-hair Domestic Feline",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Chunk",
+                            Photo1 = "uploads/chunk3/chunk-sofia.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -251,7 +264,12 @@ namespace PetTinder.Migrations
                             Bio = "Lovebug, Angel, Shy. Favorite things: Snuggles, Gravy, Treats, Feather. Least favorite things: Loud noises, Strangers, Sudden movements, Vacuum.",
                             Breed = "Medium-hair Domestic Feline",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Toad",
+                            Photo1 = "uploads/toad4/toad-sofia.jpg",
+                            Photo2 = "uploads/toad4/IMG_20171219_183621.jpg",
+                            Photo3 = "uploads/toad4/IMG_20190727_151423.jpg",
+                            Photo4 = "uploads/toad4/IMG_20180205_214524_1.jpg",
                             Species = "Cat"
                         },
                         new
@@ -261,7 +279,12 @@ namespace PetTinder.Migrations
                             Bio = "A fine boi looking for his furrever girl. Favorite things: His blanket, chirping at birds and squirrels, snuggling on your lap, licking his butt. Least favorite things: The vacuum, being picked up, having his nails clipped.",
                             Breed = "Short-hair Domestic Feline",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Winston",
+                            Photo1 = "uploads/winston5/winston-mike.jpg",
+                            Photo2 = "uploads/winston5/Image from iOS.jpg",
+                            Photo3 = "uploads/winston5/Image from iOS (2).jpg",
+                            Photo4 = "uploads/winston5/Image from iOS (1).jpg",
                             Species = "Cat"
                         },
                         new
@@ -271,7 +294,12 @@ namespace PetTinder.Migrations
                             Bio = "A Scooby Doo kinda guy looking for his Nova. Favorite things: Itch, eat all the human food scraps, long walks in the neighborhood, tennis balls. Least favorite things: Boxes, rain, baths, anything outdoors (except snow).",
                             Breed = "German Shepard 1st Generation German-American",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Roscoe",
+                            Photo1 = "uploads/roscoe6/roscoe-jen.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -281,7 +309,12 @@ namespace PetTinder.Migrations
                             Bio = "Mau is friendly to a fault. Favorite things: Mau enjoys taking naps and climbing house plants. Least favorite things: Rain and being told what to do.",
                             Breed = "Medium-hair Domestic Feline",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Mau",
+                            Photo1 = "uploads/mau7/mau-micah.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -291,7 +324,12 @@ namespace PetTinder.Migrations
                             Bio = "A scary looking dog that is a true sweetheart. Favorite things: Jasper loves stuffed toys, food, cheese, and water. Least favorite things: Rain. Loud Noises.",
                             Breed = "Dutch Shepherd",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Jasper",
+                            Photo1 = "uploads/jasper8/jasper-chris.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -301,7 +339,12 @@ namespace PetTinder.Migrations
                             Bio = "Wren is a red heeler that loves to pick on other dogs. Favorite things: Wren loves chasing her favorite toy at the park, she loves belly rubs, and cheese. Least favorite things: Rain and being told what to do",
                             Breed = "Australian Cattledog",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Wren",
+                            Photo1 = "uploads/wren9/wren-chris.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -311,7 +354,12 @@ namespace PetTinder.Migrations
                             Bio = "Ridiculously fluffy and adorable, and knows it. Favorite things: All squeeky toys. Least favorite things: Limes.",
                             Breed = "Australian Shepherd",
                             Gender = "Female",
+                            LookingFor = "A playmate with infinite energy.",
                             Name = "Molly",
+                            Photo1 = "uploads/molly10/molly-christine.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -321,7 +369,12 @@ namespace PetTinder.Migrations
                             Bio = "Very Curious, loves to get into trouble spots. Favorite things: Climbing Branches. Least favorite things: Fast Movement.",
                             Breed = "Ball Python",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Uwa",
+                            Photo1 = "uploads/uwa11/uwa-erin.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Snake"
                         },
                         new
@@ -331,7 +384,12 @@ namespace PetTinder.Migrations
                             Bio = "Fluffy, talkative, will steal your cheese. Favorite things: Pets and butt scratches. Least favorite things: Thunder and Vacuums.",
                             Breed = "Russian Blue Mix",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Mocha",
+                            Photo1 = "uploads/mocha12/mocha-erin.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -341,7 +399,12 @@ namespace PetTinder.Migrations
                             Bio = "Dangerous. Favorite things: Total domination, sleeping. Least favorite things: Being locked up.",
                             Breed = "Unknown",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Stripes",
+                            Photo1 = "uploads/stripes13/stripes-carrie.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -351,7 +414,12 @@ namespace PetTinder.Migrations
                             Bio = "The best dog ever. Favorite things: hikes. Least favorite things: shower.",
                             Breed = "Coonhound/Lab",
                             Gender = "Female",
+                            LookingFor = "",
                             Name = "Kima",
+                            Photo1 = "uploads/kima14/kima-joel.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -361,7 +429,12 @@ namespace PetTinder.Migrations
                             Bio = "Has an adorable moustache. Favorite things: sleeping. Least favorite things: screaming toddlers.",
                             Breed = "Domestic short hair",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Ashford",
+                            Photo1 = "uploads/ashford15/ashford-anita.jpg",
+                            Photo2 = "uploads/ashford15/20191026_201344.jpg",
+                            Photo3 = "uploads/ashford15/20190809_114702.jpg",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -371,7 +444,12 @@ namespace PetTinder.Migrations
                             Bio = "Very sassy when restless but irresistably cute when sleepy. Favorite things: Paper bags, boxes, being gently stroked on the nose while falling asleep. Least favorite things: Sylvie.",
                             Breed = "Mixed Breed Maine Coon",
                             Gender = "Male",
+                            LookingFor = "A calm, stable partner to balance out my erratic tendencies. Someone who wants to play but only when I feel like it.",
                             Name = "Jasper",
+                            Photo1 = "uploads/jasper16/jasper-jacqueline.jpg",
+                            Photo2 = "uploads/jasper16/20190701_120005.jpg",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -381,9 +459,62 @@ namespace PetTinder.Migrations
                             Bio = "#1 Handsy Boy. Favorite things: Wearing clothes and playing with the hose. Least favorite things: strangers, other dogs playing with his toys.",
                             Breed = "Dachshund mix",
                             Gender = "Male",
+                            LookingFor = "",
                             Name = "Levi",
+                            Photo1 = "uploads/levi17/levi-jason.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
+                        },
+                        new
+                        {
+                            PetId = 18,
+                            Age = 2,
+                            Bio = "Too much excited. Big love. Likes to wear her work vest to feel important.",
+                            Breed = "Mut",
+                            Gender = "female",
+                            LookingFor = "durable play mate",
+                            Name = "Luna",
+                            Photo1 = "uploads/luna18/20190731_094803.jpg",
+                            Photo2 = "uploads/luna18/IMG-20190830-WA0000.jpg",
+                            Photo3 = "uploads/luna18/Screenshot_20190709-093242_Snapchat.jpg",
+                            Photo4 = "",
+                            Species = "Dog"
+                        },
+                        new
+                        {
+                            PetId = 19,
+                            Age = 2,
+                            Bio = "Very sweet but loves murder. Watch your feet!",
+                            Breed = "Shorthair",
+                            Gender = "Female",
+                            LookingFor = "A murder pal and snuggles",
+                            Name = "Patches",
+                            Photo1 = "uploads/patches19/Image from iOS (3).jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
+                            Species = "Cat"
                         });
+                });
+
+            modelBuilder.Entity("PetTinder.Models.Swipe", b =>
+                {
+                    b.Property<int>("SwipeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("ISwipedRight");
+
+                    b.Property<int>("PetId");
+
+                    b.Property<int>("SwiperId");
+
+                    b.Property<bool>("TheySwipedRight");
+
+                    b.HasKey("SwipeId");
+
+                    b.ToTable("Swipes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
