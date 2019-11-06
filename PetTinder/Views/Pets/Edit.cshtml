@@ -9,26 +9,27 @@
     @Html.HiddenFor(model => model.PetId)
 
     @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class="form-control"})
     <br>
     @Html.LabelFor(model => model.Age)
-    @Html.TextBoxFor(model => model.Age)
+    @Html.TextBoxFor(model => model.Age, new { @class="form-control"})
    <br>
     @Html.LabelFor(model => model.Gender)
-    @Html.TextBoxFor(model => model.Gender)
+    @Html.TextBoxFor(model => model.Gender, new { @class="form-control"})
     <br>
     @Html.LabelFor(model => model.Species)
-    @Html.TextBoxFor(model => model.Species)
+    @Html.TextBoxFor(model => model.Species, new { @class="form-control"})
     <br>
     @Html.LabelFor(model => model.Breed)
-    @Html.TextBoxFor(model => model.Breed)
+    @Html.TextBoxFor(model => model.Breed, new { @class="form-control"})
     <br>
     @Html.LabelFor(model => model.Bio)
-    @Html.TextBoxFor(model => model.Bio)
+    @Html.TextBoxFor(model => model.Bio, new { @class="form-control"})
     <br>
     @Html.LabelFor(model => model.LookingFor)
-    @Html.TextBoxFor(model => model.LookingFor)
+    @Html.TextBoxFor(model => model.LookingFor, new { @class="form-control"})
     <br>
+   
    @if(String.IsNullOrEmpty(@Model.Photo1))
    {
    

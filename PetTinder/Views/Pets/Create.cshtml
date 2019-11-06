@@ -7,30 +7,30 @@
 @using (Html.BeginForm())
 {
     <label for="Name">Name:</label>
-    @Html.TextBoxFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name , new { @class="form-control"})
     <br>
 
     <label for="Age">Age:</label>
-    @Html.TextBoxFor(model => model.Age)
+    @Html.TextBoxFor(model => model.Age , new { @class="form-control"})
     <br>
 
     <label for="Gender">Gender:</label>
-    @Html.TextBoxFor(m => m.Gender)
+    @Html.TextBoxFor(m => m.Gender , new { @class="form-control"})
     <br>
     
     <label for="Species">Species:</label>
-    @Html.TextBoxFor(model => model.Species)
+    @Html.TextBoxFor(model => model.Species , new { @class="form-control"})
     <br>
 
     <label for="Breed">Breed:</label>
-    @Html.TextBoxFor(model => model.Breed)
+    @Html.TextBoxFor(model => model.Breed, new { @class="form-control"})
     <br>
 
     <label for="Bio">Bio:</label>
-    @Html.TextBoxFor(model => model.Bio)
+    @Html.TextBoxFor(model => model.Bio , new { @class="form-control"})
     <br>
     <label for="LookingFor">Looking For:</label>
-    @Html.TextBoxFor(model => model.LookingFor)
+    @Html.TextBoxFor(model => model.LookingFor , new { @class="form-control"})
     <br>
 
 
