@@ -3,5 +3,145 @@
 }
 
 <div class="container">
-    <h1 class="display-4">Take Meowt</h1>
+@{
+    ViewData["Title"] = "Take Meowt";
+}
+@using System.IO;
+@using PetTinder.Models;
+@using System.Collections.Generic;
+@model  List<PetTinder.Models.Pet>;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="site.css">
+  <style type="text/css">
+
+    a {color: lime;}
+    h1, h2 {
+      color: #f8f8f8;
+      font-size: 24px;
+      font-weight: normal;
+    }
+    h2 {font-size: 20px;}
+    .floaty .cardcontainer {
+      float: left;
+    }
+    h2 {clear: both;}
+    footer, header, section {
+      display: block;
+    }
+
+    .nobutton:hover .yes {
+      -webkit-animation: yay 0.7s ease-out;
+      animation: yay 0.7s ease-out;
+    }
+    .nobutton:hover .nope {
+      -webkit-animation: nope 0.7s ease-out;
+      animation: nope 0.7s ease-out;
+    }
+    .card {
+      background: powderblue;
+      color: #000;
+    }
+    .list ul.cardlist {
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+
+    <div class="cardcontainer list">
+      <ul class="cardlist">
+        <li class="card current"><img src="~/img/racoon.jpg" height="800" width="600"></li>
+        <div class="bio current">
+          <span class="stamp is-nope">NOPE</span>
+          <span class="stamp is-approved">LIKE</span>
+        <h3>Bandit, 7</h3>
+        <p>I'm looking for a dumpster-diving partner-in-crime.</p>
+        </div>
+        @foreach(Pet pet in Model)
+        {
+        <li class="card">
+          <img src=~/@pet.Photo1 height="800" width="600">
+          <span class="stamp is-nope">NOPE</span>
+          <span class="stamp is-approved">LIKE</span>
+          </li>
+
+        <div class="bio">
+        <h3>@pet.Name, @pet.Age
+          
+
+        </h3>
+      
+        <p>@pet.Bio</p>
+        </div>
+        
+        } 
+      </ul>
+      
+
+      <button class="but-nope" id="but-nope">X</button>
+      <button class="but-yay" id="but-yay">✔</button>
+    </div>
+
+  </section>
+
+
+
+<script src="tinderesque.js"></script>
+<script>
+  document.body.addEventListener('nopecard', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('yepcard', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('deckempty', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('cardchosen', function(ev) {
+     console.log(ev.detail);
+  });
+  document.body.addEventListener('nopecard', function(ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.nopes');
+    if (label) {
+      var nopes = +container.nopes || 0;
+      nopes++;
+      container.nopes = nopes;
+      label.innerHTML = container.nopes;
+    }
+  });
+  document.body.addEventListener('yepcard', function(ev) {
+    var container = ev.detail.container;
+    var label = container.querySelector('.yays');
+    if (label) {
+      var yeps = +container.yeps || 0;
+      yeps++;
+      container.yeps = yeps;
+      label.innerHTML = container.yeps;
+    }
+  });
+  document.body.addEventListener('deckempty', function(ev) {
+    var container = ev.detail.container;
+    var list = container.querySelector('.cardlist');
+    var out = '<li class="card current">#1</li>';
+    for (var i = 2; i < 6; i++) {
+      out += '<li class="card">#' + i + '</li>';
+    }
+    list.innerHTML = out;
+  });
+</script>
+
+
+
 </div>
+
+</body>
+</html>

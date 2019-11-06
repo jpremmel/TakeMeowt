@@ -39,26 +39,26 @@
    } 
  
     <br><br>  
-    @if(Model.Photo2 != null)
+   @if(String.IsNullOrEmpty(@Model.Photo2))
    {
     <label for="file">Upload Image:</label>  
     <input type="file" name="Photo2" id="Photo2"/><br><br>  
    }
     <br><br> 
 
-    @if(Model.Photo3 == null)
+   @if(String.IsNullOrEmpty(@Model.Photo3))
    {
     <label for="file">Upload Image:</label>  
     <input type="file" name="Photo3" id="Photo3"/><br><br>  
    }
     <br><br> 
 
-    @if(Model.Photo4 == null)
+   @if(String.IsNullOrEmpty(@Model.Photo4))
    {
     <label for="file">Upload Image:</label>  
     <input type="file" name="Photo4" id="Photo4"/><br><br>  
    }
-    <input type="submit" value="Upload Images"/>  
+    @*<input type="submit" value="Upload Images"/>  *@
     <br><br> 
 
 
