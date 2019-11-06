@@ -54,7 +54,7 @@ namespace PetTinder.Controllers
 
             _db.Pets.Add(pet);
             _db.SaveChanges();
-            return RedirectToAction("Details", new { id = pet.PetId });
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Edit()
@@ -73,8 +73,6 @@ namespace PetTinder.Controllers
             return RedirectToAction("Details", new { id = pet.PetId });
         }
 
-
-        //GET PHOTO
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details()
         {
