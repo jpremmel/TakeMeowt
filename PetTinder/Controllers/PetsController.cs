@@ -74,8 +74,8 @@ namespace PetTinder.Controllers
                 path = pet.Photo4;
             }
             FileStream stream = System.IO.File.Open(@path, System.IO.FileMode.Open);
-            ViewBag.Photo = File(stream, "image/jpg");
-            return View();
+            var Photo = File(stream, "image/jpg");
+            return RedirectToAction("Index", new { photo = photo });
         }
 
         //UPLOAD PHOTO
