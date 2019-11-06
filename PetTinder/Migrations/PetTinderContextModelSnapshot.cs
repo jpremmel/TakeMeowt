@@ -497,6 +497,24 @@ namespace PetTinder.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PetTinder.Models.Swipe", b =>
+                {
+                    b.Property<int>("SwipeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("ISwipedRight");
+
+                    b.Property<int>("PetId");
+
+                    b.Property<int>("SwiperId");
+
+                    b.Property<bool>("TheySwipedRight");
+
+                    b.HasKey("SwipeId");
+
+                    b.ToTable("Swipes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
