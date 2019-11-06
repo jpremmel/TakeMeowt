@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PetTinderMVC</title>
+    <title>@ViewData["Title"]Take Meowt</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -24,16 +24,12 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" href="\Home">Take Meowt</a>
-                 
-                 <a class="navbar-brand" asp-area="" asp-controller="Index" asp-action="Index" href="\Pets">Start Swiping!</a>
-                 
-                 <a class="navbar-brand" asp-area="" asp-controller="Create" asp-action="Create" href="\Pets\Create">Add A Profile</a>
-
-                 <a class="navbar-brand" asp-area="" asp-controller="Details" asp-action="Details" href="\Details">Profile</a>
                  
                  
-                 @*<a class="navbar-brand" asp-area="" asp-controller="Edit" asp-action="Edit" href="\Pets\Edit\{id}">Edit Your Profile</a>*@
+                 
+                 
+                 
+    
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -43,23 +39,28 @@
                     
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand" id="navLogo" asp-area="" asp-controller="Home" asp-action="Index" href="\Home">Take Meowt</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                         </li>
                     </ul>
                 </div>
+
+                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Create" asp-action="Create" href="\Pets\Create"><i class="fas fa-user-plus"></i></a>
+
+                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Details" asp-action="Details" href="\Details"><i class="fas fa-user-alt"></i></a>
                 <div id="login">
-                        <ul class="navbar-nav flex-grow-1 mr-auto">
+                        <ul class="navbar-nav flex-grow-1 mr-auto nav-profile-logo">
                             <li class="nav-item">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Index"
+                                <a class="nav-link text-dark nav-profile-logo" asp-area="" asp-controller="Index"
                                     href="\Account"><i class="fas fa-sign-out-alt"></i></a>
                                 }
                                 @if (!User.Identity.IsAuthenticated)
                                 {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Index"
+                                <a class="nav-link text-dark nav-profile-logo" asp-area="" asp-controller="Index"
                                     href="\Account"><i class="fas fa-sign-in-alt"></i></a>
                                 }
                             </li>

@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 a.navbar-brand {
   white-space: normal;
-  text-align: center;
+  /* text-align: center; */
   word-break: break-all;
 }
 
@@ -204,8 +204,8 @@ body {
 .stamp {
   transform: rotate(12deg);
 	color: #555;
-	font-size: 3rem;
-	font-weight: 700;
+	font-size: 2rem;
+	font-weight: 500;
 	border: 0.25rem solid #555;
 	display: inline-block;
 	padding: 0.25rem 1rem;
@@ -214,6 +214,7 @@ body {
 	-webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
   -webkit-mask-size: 944px 604px;
   mix-blend-mode: multiply;
+  width:200px; 
 }
 .stamp{
  
@@ -223,9 +224,9 @@ body {
   animation-name: pulse;
   
   /* -webkit-animation-delay:0.5s; */
-  -webkit-animation-duration: 100s;
-  animation-duration: 100s;
-  opacity: 0;
+  -webkit-animation-duration: 20s;
+  animation-duration: 10s;
+  opacity: 01;
   -webkit-animation-fill-mode:forwards;
    animation-fill-mode:forwards;
 }
@@ -239,12 +240,12 @@ body {
   10%{
     opacity:.50;
     transform-origin: 50% 50%;
-    transform: rotate(-2deg) scale(5);
+    transform: rotate(-2deg) scale(10);
     transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
   }
   100%{
     opacity:1;
-    transform: rotate(-15deg) scale(1);
+    transform: rotate(-15deg) scale(10);
   }
 }
 
@@ -270,3 +271,4 @@ body {
 .is-approved{
      display: none;
 }
+

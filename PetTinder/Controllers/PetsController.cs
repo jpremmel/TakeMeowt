@@ -321,5 +321,49 @@ namespace PetTinder.Controllers
         //     return RedirectToAction("Details");
         // }
 
+        //UPLOAD PHOTO
+        [HttpPost("{id}/upload")]
+        public async Task<IActionResult> Upload([FromForm] IFormFile file)
+        {
+            //Find pet that belongs to the currently logged in user
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
+
+            //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
+            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
+            //Create GUID and append it to file name to make sure file names of uploaded photos are unique
+            var guid = Guid.NewGuid().ToString();
+            string photoPath = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid}{file.FileName}";
+            //Save photo path string to pet's Photo1, Photo2, Photo3, or Photo4 property (whichever is null or empty)
+            if (String.IsNullOrEmpty(pet.Photo1))
+            {
+                pet.Photo1 = photoPath;
+            }
+            else if (String.IsNullOrEmpty(pet.Photo2))
+            {
+                pet.Photo2 = photoPath;
+            }
+            else if (String.IsNullOrEmpty(pet.Photo3))
+            {
+                pet.Photo3 = photoPath;
+            }
+            else if (String.IsNullOrEmpty(pet.Photo4))
+            {
+                pet.Photo4 = photoPath;
+            }
+            _db.Entry(pet).State = EntityState.Modified;
+            _db.SaveChanges();
+            //Save file to local project uploads directory
+            if (file.Length > 0)
+            {
+                using (var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file.FileName}"), FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+            return RedirectToAction("Details");
+        }
+
     }
 }
