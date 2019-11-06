@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetTinder.Models;
 
 namespace PetTinder.Migrations
 {
     [DbContext(typeof(PetTinderContext))]
-    partial class PetTinderContextModelSnapshot : ModelSnapshot
+    [Migration("20191106150232_SeedPhotos")]
+    partial class SeedPhotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,7 +223,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "A cuddle buddy who will never leave my side.",
                             Name = "Sylvie",
-                            Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg",
+                            Photo1 = "~/uploads/sylvie1/sylvie-jacqueline.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -236,7 +238,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Bridget",
-                            Photo1 = "uploads/bridget2/bridget-jason.jpg",
+                            Photo1 = "~/uploads/bridget2/bridget-jason.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -251,7 +253,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Chunk",
-                            Photo1 = "uploads/chunk3/chunk-sofia.jpg",
+                            Photo1 = "~/uploads/chunk3/chunk-sofia.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -266,7 +268,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Toad",
-                            Photo1 = "uploads/toad4/toad-sofia.jpg",
+                            Photo1 = "~/uploads/toad4/toad-sofia.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -281,7 +283,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Winston",
-                            Photo1 = "uploads/winston5/winston-mike.jpg",
+                            Photo1 = "~/uploads/winston5/winston-mike.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -296,7 +298,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Roscoe",
-                            Photo1 = "uploads/roscoe6/roscoe-jen.jpg",
+                            Photo1 = "~/uploads/roscoe6/roscoe-jen.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -311,7 +313,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Mau",
-                            Photo1 = "uploads/mau7/mau-micah.jpg",
+                            Photo1 = "~/uploads/mau7/mau-micah.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -326,7 +328,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Jasper",
-                            Photo1 = "uploads/jasper8/jasper-chris.jpg",
+                            Photo1 = "~/uploads/jasper8/jasper-chris.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -341,7 +343,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Wren",
-                            Photo1 = "uploads/wren9/wren-chris.jpg",
+                            Photo1 = "~/uploads/wren9/wren-chris.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -356,7 +358,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Molly",
-                            Photo1 = "uploads/molly10/molly-christine.jpg",
+                            Photo1 = "~/uploads/molly10/molly-christine.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -371,7 +373,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Uwa",
-                            Photo1 = "uploads/uwa11/uwa-erin.jpg",
+                            Photo1 = "~/uploads/uwa11/uwa-erin.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -386,7 +388,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Mocha",
-                            Photo1 = "uploads/mocha12/mocha-erin.jpg",
+                            Photo1 = "~/uploads/mocha12/mocha-erin.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -401,7 +403,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Stripes",
-                            Photo1 = "uploads/stripes13/stripes-carrie.jpg",
+                            Photo1 = "~/uploads/stripes13/stripes-carrie.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -416,7 +418,7 @@ namespace PetTinder.Migrations
                             Gender = "Female",
                             LookingFor = "",
                             Name = "Kima",
-                            Photo1 = "uploads/kima14/kima-joel.jpg",
+                            Photo1 = "~/uploads/kima14/kima-joel.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -431,7 +433,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Ashford",
-                            Photo1 = "uploads/ashford15/ashford-anita.jpg",
+                            Photo1 = "~/uploads/ashford15/ashford-anita.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -446,7 +448,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Jasper",
-                            Photo1 = "uploads/jasper16/jasper-jacqueline.jpg",
+                            Photo1 = "~/uploads/jasper16/jasper-jacqueline.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
@@ -461,7 +463,7 @@ namespace PetTinder.Migrations
                             Gender = "Male",
                             LookingFor = "",
                             Name = "Levi",
-                            Photo1 = "uploads/levi17/levi-jason.jpg",
+                            Photo1 = "~/uploads/levi17/levi-jason.jpg",
                             Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
