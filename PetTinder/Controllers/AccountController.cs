@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using PetTinder.Models;
 using System.Threading.Tasks;
 using PetTinder.ViewModels;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PetTinder.Controllers
 {
@@ -52,6 +54,7 @@ namespace PetTinder.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
+
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (result.Succeeded)
             {

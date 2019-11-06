@@ -3,6 +3,7 @@
 }
 @using System.IO;
 @using PetTinder.Models;
+@using System.Collections.Generic;
 @model  List<PetTinder.Models.Pet>;
 
 
@@ -63,8 +64,12 @@
         @foreach(Pet pet in Model)
         {
         <li class="card">
-          <img src="@pet.Photo1" height="800" width="600">
-          <span class="stamp is-nope">DENIED</span><span class="stamp is-approved">LIKE</span></li>
+
+          <img src=~/img/@pet.Photo1 height="800" width="600">
+          <span class="stamp is-nope">DENIED</span><span class="stamp is-approved">LIKE</span>
+
+          </li>
+
         <div class="bio">
         <h3>@pet.Name, @pet.Age
           
@@ -130,5 +135,10 @@
     list.innerHTML = out;
   });
 </script>
+<ul>
+
+  <li>@Html.ActionLink("Profile", "Details",  new { id = 1 }) </li>
+
+</ul>
 </body>
 </html>
