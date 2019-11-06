@@ -57,32 +57,31 @@ namespace PetTinder.Controllers
             return RedirectToAction("Details", new { id = pet.PetId });
         }
 
+        public async Task<IActionResult> Edit()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            return View(pet);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Pet pet)
+        {
+            _db.Entry(pet).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Details", new { id = pet.PetId });
+        }
+
 
         //GET PHOTO
-        [HttpGet("{id}/photo")] 
-        public IActionResult Details(int id, int photo)
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details()
         {
-            Pet pet = _db.Pets.FirstOrDefault(entry => entry.PetId == id);
-            string path = "";
-            if (photo == 1)
-            {
-                path = pet.Photo1;
-            }
-            else if (photo == 2)
-            {
-                path = pet.Photo2;
-            }
-            else if (photo == 3)
-            {
-                path = pet.Photo3;
-            }
-            else if (photo == 4)
-            {
-                path = pet.Photo4;
-            }
-            FileStream stream = System.IO.File.Open(@path, System.IO.FileMode.Open);
-            var Photo = File(stream, "image/jpg");
-            return RedirectToAction("Index", new { photo = photo });
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            return View(pet);
         }
 
         //UPLOAD PHOTO
