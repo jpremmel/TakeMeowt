@@ -33,7 +33,7 @@ namespace PetTinder.Models
 
                     new Pet { PetId = 9, Name = "Wren", Species = "Dog", Breed = "Australian Cattledog", Age = 4, Gender = "Female", Bio = "Wren is a red heeler that loves to pick on other dogs. Favorite things: Wren loves chasing her favorite toy at the park, she loves belly rubs, and cheese. Least favorite things: Rain and being told what to do", LookingFor = "", Photo1 = "uploads/wren9/wren-chris.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
 
-                    new Pet { PetId = 10, Name = "Molly", Species = "Dog", Breed = "Australian Shepherd", Age = 2, Gender = "Female", Bio = "Ridiculously fluffy and adorable, and knows it. Favorite things: All squeeky toys. Least favorite things: Limes.", LookingFor = "", Photo1 = "uploads/molly10/molly-christine.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
+                    new Pet { PetId = 10, Name = "Molly", Species = "Dog", Breed = "Australian Shepherd", Age = 2, Gender = "Female", Bio = "Ridiculously fluffy and adorable, and knows it. Favorite things: All squeeky toys. Least favorite things: Limes.", LookingFor = "A playmate with infinite energy.", Photo1 = "uploads/molly10/molly-christine.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
 
                     new Pet { PetId = 11, Name = "Uwa", Species = "Snake", Breed = "Ball Python", Age = 3, Gender = "Female", Bio = "Very Curious, loves to get into trouble spots. Favorite things: Climbing Branches. Least favorite things: Fast Movement.", LookingFor = "", Photo1 = "uploads/uwa11/uwa-erin.jpg", Photo2 = "", Photo3 = "", Photo4 = "" },
 
