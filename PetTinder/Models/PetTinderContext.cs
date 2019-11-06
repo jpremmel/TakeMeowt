@@ -9,8 +9,7 @@ namespace PetTinder.Models
         public PetTinderContext(DbContextOptions options) : base(options) {}
 
         public DbSet<Pet> Pets { get; set; }
-        // public DbSet<IdentityUser> IdentityUsers { get; set; }
-        // public DbSet<Swipe> Swipes { get; set; }
+        public DbSet<Swipe> Swipes { get; set; }
 
         //SEED DATA
         protected override void OnModelCreating(ModelBuilder builder)

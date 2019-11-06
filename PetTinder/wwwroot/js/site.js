@@ -101,6 +101,9 @@ $(document).ready(function () {
         $('.is-nope').show(function () {
             $('.is-nope').hide(20);
         });
+
+
+
     });
 
     $("#but-yay").click(function () {
@@ -108,5 +111,9 @@ $(document).ready(function () {
             $('.is-approved').hide(20);
 
         });
+
+
+
+        
     });
 })
