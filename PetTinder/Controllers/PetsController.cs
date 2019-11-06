@@ -41,19 +41,28 @@ namespace PetTinder.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Pet pet)
+        public async Task<ActionResult> Create(Pet pet)
         {
-            // var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
-            // Directory.CreateDirectory(photoDirectory);
+            //Find the current user's id and set it to the UserId property of the pet that was just created
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            pet.User = currentUser;
+
+            //Create photo directory in "uploads" folder for the pet that was just created
+            var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
+            Directory.CreateDirectory(photoDirectory);
+
             _db.Pets.Add(pet);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit()
         {
-            var thisPet = _db.Pets.FirstOrDefault(f => f.PetId == id);
-            return View(thisPet);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            return View(pet);
         }
 
         [HttpPost]
@@ -61,37 +70,16 @@ namespace PetTinder.Controllers
         {
             _db.Entry(pet).State = EntityState.Modified;
             _db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = pet.PetId });
         }
 
-
-
-        //GET PHOTO
-        [HttpGet("Details/{id}")] 
-        public IActionResult Details(int id, int photo)
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details()
         {
-            Pet pet = _db.Pets.FirstOrDefault(entry => entry.PetId == id);
-            // string path = "";
-            
-            // if (photo == 1)
-            // {
-            //     path = pet.Photo1;
-            // }
-            // else if (photo == 2)
-            // {
-            //     path = pet.Photo2;
-            // }
-            // else if (photo == 3)
-            // {
-            //     path = pet.Photo3;
-            // }
-            // else if (photo == 4)
-            // {
-            //     path = pet.Photo4;
-            // }
-            // FileStream stream = System.IO.File.Open(@path, System.IO.FileMode.Open);
-            // var Photo = File(stream, "image/jpg");
-            return View();
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            return View(pet);
         }
 
         //UPLOAD PHOTO

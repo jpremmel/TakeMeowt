@@ -4,6 +4,6 @@ namespace PetTinder.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
+        
     }
 }
