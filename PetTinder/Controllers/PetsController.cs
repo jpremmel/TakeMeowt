@@ -61,7 +61,7 @@ namespace PetTinder.Controllers
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            var pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
             return View(pet);
         }
 
@@ -73,12 +73,12 @@ namespace PetTinder.Controllers
             return RedirectToAction("Details", new { id = pet.PetId });
         }
 
-        [HttpGet("Details/{id}")]
+        [HttpGet("Details")]
         public async Task<IActionResult> Details()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
-            var pet = _db.Pets.Where(p => p.User.Id == currentUser.Id);
+            Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
             return View(pet);
         }
 
