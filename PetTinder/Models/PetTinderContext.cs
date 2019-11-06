@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace PetTinder.Models
 {
@@ -8,11 +9,14 @@ namespace PetTinder.Models
         public PetTinderContext(DbContextOptions options) : base(options) {}
 
         public DbSet<Pet> Pets { get; set; }
+        // public DbSet<IdentityUser> IdentityUsers { get; set; }
+        // public DbSet<Swipe> Swipes { get; set; }
 
         //SEED DATA
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<Pet>()
                 .HasData(
                     new Pet { PetId = 1, Name = "Sylvie", Species = "Dog", Breed = "Shih-tzu mix", Age = 6, Gender = "Female", Bio = "Grey, lanky, fluffy, distinct underbite. Favorite things: Chicken, tortellini, beach, snow, her toys, being cozy. Least favorite things: Grooming, vet visits, guitars, being cold, being alone.", LookingFor = "A cuddle buddy who will never leave my side.", Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg", Photo2 = "uploads/sylvie1/20190604_125610.jpg", Photo3 = "uploads/sylvie1/20170531_140539.jpg", Photo4 = "uploads/sylvie1/20170531_140534.jpg" },

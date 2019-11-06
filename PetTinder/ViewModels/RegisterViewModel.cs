@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using PetTinder.Models;
+
 
 namespace PetTinder.ViewModels
 {
@@ -18,5 +20,6 @@ namespace PetTinder.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
     }
 }

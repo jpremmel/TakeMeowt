@@ -41,10 +41,17 @@ namespace PetTinder.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Pet pet)
+        public async Task<ActionResult> Create(Pet pet)
         {
+            //Find the current user's id and set it to the UserId property of the pet that was just created
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            pet.User = currentUser;
+
+            //Create photo directory in "uploads" folder for the pet that was just created
             var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
             Directory.CreateDirectory(photoDirectory);
+
             _db.Pets.Add(pet);
             _db.SaveChanges();
             return RedirectToAction("Details", new { id = pet.PetId });

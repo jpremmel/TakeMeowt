@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
@@ -23,17 +24,6 @@ namespace PetTinder.Models
         public string Photo2 { get; set; }
         public string Photo3 { get; set; }
         public string Photo4 { get; set; }
-        // public ICollection<Pet> Interested { get; }
-        // public ICollection<Match> Matches { get; }
         public virtual ApplicationUser User { get; set; }
-
-        // public Pet()
-        // {
-        //     this.Interested = new HashSet<Pet>();
-        // }
-
-
-
-    
     }
 }
