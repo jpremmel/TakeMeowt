@@ -1,4 +1,4 @@
-@using PetTinderMVC.Models;
+@using PetTinder.Models;
 @model Pet;
 
 
@@ -32,6 +32,14 @@
     <label for="LookingFor">Looking For:</label>
     @Html.TextBoxFor(model => model.LookingFor)
     <br>
+
+
+    <label for="file">Upload Image:</label>  
+    <input type="file" name="Photo1" id="Photo1"/><br><br>  
+
+    
+    <input type="submit" value="Upload Image"/>  
+    <br><br> 
 
     <input type="submit" value="Add Profile" class="btn btn-primary" />
 }

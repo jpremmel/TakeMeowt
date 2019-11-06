@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetTinder.Models;
 
 namespace PetTinder.Migrations
 {
     [DbContext(typeof(PetTinderContext))]
-    partial class PetTinderContextModelSnapshot : ModelSnapshot
+    [Migration("20191106191213_SeedData2")]
+    partial class SeedData2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,6 +192,8 @@ namespace PetTinder.Migrations
                     b.Property<string>("LookingFor");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Password");
 
                     b.Property<string>("Photo1");
 

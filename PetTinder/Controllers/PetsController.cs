@@ -43,39 +43,55 @@ namespace PetTinder.Controllers
         [HttpPost]
         public ActionResult Create(Pet pet)
         {
-            var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
-            Directory.CreateDirectory(photoDirectory);
+            // var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
+            // Directory.CreateDirectory(photoDirectory);
             _db.Pets.Add(pet);
             _db.SaveChanges();
-            return RedirectToAction("Details", new { id = pet.PetId });
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var thisPet = _db.Pets.FirstOrDefault(f => f.PetId == id);
+            return View(thisPet);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Pet pet)
+        {
+            _db.Entry(pet).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
+
         //GET PHOTO
-        [HttpGet("{id}/photo")] 
+        [HttpGet("Details/{id}")] 
         public IActionResult Details(int id, int photo)
         {
             Pet pet = _db.Pets.FirstOrDefault(entry => entry.PetId == id);
-            string path = "";
-            if (photo == 1)
-            {
-                path = pet.Photo1;
-            }
-            else if (photo == 2)
-            {
-                path = pet.Photo2;
-            }
-            else if (photo == 3)
-            {
-                path = pet.Photo3;
-            }
-            else if (photo == 4)
-            {
-                path = pet.Photo4;
-            }
-            FileStream stream = System.IO.File.Open(@path, System.IO.FileMode.Open);
-            var Photo = File(stream, "image/jpg");
-            return RedirectToAction("Index", new { photo = photo });
+            // string path = "";
+            
+            // if (photo == 1)
+            // {
+            //     path = pet.Photo1;
+            // }
+            // else if (photo == 2)
+            // {
+            //     path = pet.Photo2;
+            // }
+            // else if (photo == 3)
+            // {
+            //     path = pet.Photo3;
+            // }
+            // else if (photo == 4)
+            // {
+            //     path = pet.Photo4;
+            // }
+            // FileStream stream = System.IO.File.Open(@path, System.IO.FileMode.Open);
+            // var Photo = File(stream, "image/jpg");
+            return View();
         }
 
         //UPLOAD PHOTO

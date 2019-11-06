@@ -223,10 +223,10 @@ body {
   animation-name: pulse;
   
   /* -webkit-animation-delay:0.5s; */
-  -webkit-animation-duration: 0.5s;
-  /* animation-duration: 0.5s; */
+  -webkit-animation-duration: 100s;
+  animation-duration: 100s;
   opacity: 0;
-  /* -webkit-animation-fill-mode:forwards; */
+  -webkit-animation-fill-mode:forwards;
    animation-fill-mode:forwards;
 }
 

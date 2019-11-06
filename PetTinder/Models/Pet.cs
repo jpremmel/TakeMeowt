@@ -23,7 +23,8 @@ namespace PetTinder.Models
         public string Photo2 { get; set; }
         public string Photo3 { get; set; }
         public string Photo4 { get; set; }
-        public byte[] TestPhoto1 { get; set; }
+     
+        // public byte[] TestPhoto1 { get; set; }
         // public ICollection<Pet> Interested { get; }
         // public ICollection<Match> Matches { get; }
         public virtual ApplicationUser User { get; set; }

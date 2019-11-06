@@ -1,35 +1,64 @@
 @using PetTinder.Models;
 @model PetTinder.Models.Pet;
 @{
-    ViewData["Title"] = "Edit "+ @Model.Name;
+    ViewData["Title"] = "Edit ";
 }
-<h3>Edit @Model.Name</h3>
+<h3>Edit Profile</h3>
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.PetId)
 
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
-    
+    <br>
     @Html.LabelFor(model => model.Age)
     @Html.TextBoxFor(model => model.Age)
-   
+   <br>
     @Html.LabelFor(model => model.Gender)
     @Html.TextBoxFor(model => model.Gender)
-    
+    <br>
     @Html.LabelFor(model => model.Species)
     @Html.TextBoxFor(model => model.Species)
-    
+    <br>
     @Html.LabelFor(model => model.Breed)
     @Html.TextBoxFor(model => model.Breed)
-
+    <br>
     @Html.LabelFor(model => model.Bio)
     @Html.TextBoxFor(model => model.Bio)
-
+    <br>
     @Html.LabelFor(model => model.LookingFor)
     @Html.TextBoxFor(model => model.LookingFor)
-    
+    <br>
+   @if(String.IsNullOrEmpty(@Model.Photo1))
+   {
+   
+    <label for="file">Upload Image:</label>  
+    <input type="file" name="Photo1" id="Photo1"/><br><br>  
+       
+   } 
+ 
+    <br><br>  
+    @if(Model.Photo2 != null)
+   {
+    <label for="file">Upload Image:</label>  
+    <input type="file" name="Photo2" id="Photo2"/><br><br>  
+   }
+    <br><br> 
 
+    @if(Model.Photo3 == null)
+   {
+    <label for="file">Upload Image:</label>  
+    <input type="file" name="Photo3" id="Photo3"/><br><br>  
+   }
+    <br><br> 
+
+    @if(Model.Photo4 == null)
+   {
+    <label for="file">Upload Image:</label>  
+    <input type="file" name="Photo4" id="Photo4"/><br><br>  
+   }
+    <input type="submit" value="Upload Images"/>  
+    <br><br> 
 
 
     <input type="submit" class = "btn btn-primary" value="Save Changes" />
