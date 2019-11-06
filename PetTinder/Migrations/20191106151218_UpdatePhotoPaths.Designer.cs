@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetTinder.Models;
 
 namespace PetTinder.Migrations
 {
     [DbContext(typeof(PetTinderContext))]
-    partial class PetTinderContextModelSnapshot : ModelSnapshot
+    [Migration("20191106151218_UpdatePhotoPaths")]
+    partial class UpdatePhotoPaths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,6 +203,8 @@ namespace PetTinder.Migrations
 
                     b.Property<string>("Species");
 
+                    b.Property<byte[]>("TestPhoto1");
+
                     b.Property<string>("UserId");
 
                     b.HasKey("PetId");
@@ -220,9 +224,9 @@ namespace PetTinder.Migrations
                             LookingFor = "A cuddle buddy who will never leave my side.",
                             Name = "Sylvie",
                             Photo1 = "uploads/sylvie1/sylvie-jacqueline.jpg",
-                            Photo2 = "uploads/sylvie1/20190604_125610.jpg",
-                            Photo3 = "uploads/sylvie1/20170531_140539.jpg",
-                            Photo4 = "uploads/sylvie1/20170531_140534.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Dog"
                         },
                         new
@@ -265,9 +269,9 @@ namespace PetTinder.Migrations
                             LookingFor = "",
                             Name = "Toad",
                             Photo1 = "uploads/toad4/toad-sofia.jpg",
-                            Photo2 = "uploads/toad4/IMG_20171219_183621.jpg",
-                            Photo3 = "uploads/toad4/IMG_20190727_151423.jpg",
-                            Photo4 = "uploads/toad4/IMG_20180205_214524_1.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -280,9 +284,9 @@ namespace PetTinder.Migrations
                             LookingFor = "",
                             Name = "Winston",
                             Photo1 = "uploads/winston5/winston-mike.jpg",
-                            Photo2 = "uploads/winston5/Image from iOS.jpg",
-                            Photo3 = "uploads/winston5/Image from iOS (2).jpg",
-                            Photo4 = "uploads/winston5/Image from iOS (1).jpg",
+                            Photo2 = "",
+                            Photo3 = "",
+                            Photo4 = "",
                             Species = "Cat"
                         },
                         new
@@ -352,7 +356,7 @@ namespace PetTinder.Migrations
                             Bio = "Ridiculously fluffy and adorable, and knows it. Favorite things: All squeeky toys. Least favorite things: Limes.",
                             Breed = "Australian Shepherd",
                             Gender = "Female",
-                            LookingFor = "A playmate with infinite energy.",
+                            LookingFor = "",
                             Name = "Molly",
                             Photo1 = "uploads/molly10/molly-christine.jpg",
                             Photo2 = "",
@@ -430,8 +434,8 @@ namespace PetTinder.Migrations
                             LookingFor = "",
                             Name = "Ashford",
                             Photo1 = "uploads/ashford15/ashford-anita.jpg",
-                            Photo2 = "uploads/ashford15/20191026_201344.jpg",
-                            Photo3 = "uploads/ashford15/20190809_114702.jpg",
+                            Photo2 = "",
+                            Photo3 = "",
                             Photo4 = "",
                             Species = "Cat"
                         },
@@ -442,10 +446,10 @@ namespace PetTinder.Migrations
                             Bio = "Very sassy when restless but irresistably cute when sleepy. Favorite things: Paper bags, boxes, being gently stroked on the nose while falling asleep. Least favorite things: Sylvie.",
                             Breed = "Mixed Breed Maine Coon",
                             Gender = "Male",
-                            LookingFor = "A calm, stable partner to balance out my erratic tendencies. Someone who wants to play but only when I feel like it.",
+                            LookingFor = "",
                             Name = "Jasper",
                             Photo1 = "uploads/jasper16/jasper-jacqueline.jpg",
-                            Photo2 = "uploads/jasper16/20190701_120005.jpg",
+                            Photo2 = "",
                             Photo3 = "",
                             Photo4 = "",
                             Species = "Cat"
@@ -464,36 +468,6 @@ namespace PetTinder.Migrations
                             Photo3 = "",
                             Photo4 = "",
                             Species = "Dog"
-                        },
-                        new
-                        {
-                            PetId = 18,
-                            Age = 2,
-                            Bio = "Too much excited. Big love. Likes to wear her work vest to feel important.",
-                            Breed = "Mut",
-                            Gender = "female",
-                            LookingFor = "durable play mate",
-                            Name = "Luna",
-                            Photo1 = "uploads/luna18/20190731_094803.jpg",
-                            Photo2 = "uploads/luna18/IMG-20190830-WA0000.jpg",
-                            Photo3 = "uploads/luna18/Screenshot_20190709-093242_Snapchat.jpg",
-                            Photo4 = "",
-                            Species = "Dog"
-                        },
-                        new
-                        {
-                            PetId = 19,
-                            Age = 2,
-                            Bio = "Very sweet but loves murder. Watch your feet!",
-                            Breed = "Shorthair",
-                            Gender = "Female",
-                            LookingFor = "A murder pal and snuggles",
-                            Name = "Patches",
-                            Photo1 = "uploads/patches19/Image from iOS (3).jpg",
-                            Photo2 = "",
-                            Photo3 = "",
-                            Photo4 = "",
-                            Species = "Cat"
                         });
                 });
 

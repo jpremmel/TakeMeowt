@@ -15,7 +15,7 @@ using System;
 
 namespace PetTinder.Controllers
 {
-    // [Authorize]
+    [Authorize]
     public class PetsController : Controller
     {
         private readonly PetTinderContext _db;
