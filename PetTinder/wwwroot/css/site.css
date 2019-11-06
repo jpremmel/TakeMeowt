@@ -44,6 +44,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  font-family: 'Chicle', cursive;
+  background-color: pink;
 }
 .footer {
   position: absolute;
@@ -53,4 +55,218 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+
+
+
+
+/* Design of a card */
+.card {
+  font-size: 14px;
+  line-height: 200px;
+  text-align:center;
+  width: 600px;
+  height: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #666;
+  -webkit-transform-origin: 50% 99%; 
+  transform-origin: 50% 99%;
+}
+
+.bio {
+  
+  display: none;
+  
+}
+
+
+.cardcontainer {
+  padding: 20px;
+  text-align: center;
+  width: 75%;
+  height: auto;
+   margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 40px;
+}
+
+/* List functionality */
+.list .cardlist {
+  margin: 0;
+  padding: 0;
+}
+.tinderesque .list .card {
+  display: none;
+}
+.tinderesque .list .current {
+  display: block;
+}
+
+/* Button designs */
+
+.but-nope, .but-yay, .nopes, .yays {
+  display: none;
+}
+
+.tinderesque .but-nope, .tinderesque .but-yay,
+.tinderesque .nopes, .tinderesque .yays {
+  display: inline-block;
+}
+
+.cardcontainer button {
+  background: #0c0;
+  border: none;
+  color: #fff;
+  border-radius: 50% 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 .5em;
+  display: inline-block;
+}
+.cardcontainer button:focus {
+  outline: 0;
+  background: #0f0;
+}
+.cardcontainer .but-nope {
+  background: #c00;
+}
+.cardcontainer .but-nope:focus {
+  outline: 0;
+  background: #f00;
+}
+
+.tinderesque .cardcontainer.yes .card {
+  -webkit-animation: yay 0.7s ease-out;
+  animation: yay 0.7s ease-out;
+}
+.tinderesque .cardcontainer.nope .card {
+  -webkit-animation: nope 0.7s ease-out;
+  animation: nope 0.7s ease-out;
+}
+
+
+/*
+  Animations, isn't it 'fun' to repeat all of that, just for Safari? :)
+*/
+
+@keyframes yay {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes yay {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotate(40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes nope {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes nope {
+  from {
+    -webkit-transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: rotate(-40deg) translateY(-80px);
+    opacity: 0;
+  }
+}
+/* THIS IS THE CSS FOR THE STAMP ANIMATIONS */
+
+.stamp {
+  transform: rotate(12deg);
+	color: #555;
+	font-size: 3rem;
+	font-weight: 700;
+	border: 0.25rem solid #555;
+	display: inline-block;
+	padding: 0.25rem 1rem;
+	border-radius: 1rem;
+	font-family: 'Courier';
+	-webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
+  -webkit-mask-size: 944px 604px;
+  mix-blend-mode: multiply;
+}
+.stamp{
+ 
+  border-radius:5px;
+  position:relative;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  
+  /* -webkit-animation-delay:0.5s; */
+  -webkit-animation-duration: 0.5s;
+  /* animation-duration: 0.5s; */
+  opacity: 0;
+  /* -webkit-animation-fill-mode:forwards; */
+   animation-fill-mode:forwards;
+}
+
+
+
+@-webkit-keyframes pulse{
+  0%{
+    opacity: 0;
+  }
+  10%{
+    opacity:.50;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100%{
+    opacity:1;
+    transform: rotate(-15deg) scale(1);
+  }
+}
+
+.is-nope {
+  color: #D23;
+  border: 0.5rem double #D23;
+  transform: rotate(3deg);
+	-webkit-mask-position: 2rem 3rem;
+  font-size: 2rem;  
+}
+
+.is-approved {
+	color: #0A9928;
+	border: 0.5rem solid #0A9928;
+	-webkit-mask-position: 13rem 6rem;
+	transform: rotate(-14deg);
+  border-radius: 0;
+} 
+.is-nope{
+     display: none;
+}
+
+.is-approved{
+     display: none;
 }

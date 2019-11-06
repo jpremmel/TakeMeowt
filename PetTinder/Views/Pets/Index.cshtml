@@ -1,9 +1,9 @@
 @{
     ViewData["Title"] = "Take Meowt";
 }
-@using PetTinder.Models
-@using System.IO
-@model List<PetTinder.Models.Pet>
+@using PetTinder.Models;
+@model  List<PetTinder.Models.Pet>;
+
 
 <!DOCTYPE html>
 <html>
@@ -49,22 +49,39 @@
 
   <section>
 
-
-
     <div class="cardcontainer list">
       <ul class="cardlist">
-        <li class="card current">#1</li>
-        <li class="card">#2</li>
-        <li class="card">#3</li>
-        <li class="card">#4</li>
-        <li class="card">#5</li>
-        <li class="card">#6</li>
+        <li class="card current"><img src="~/img/racoon.jpg" height="800" width="600"></li>
+        <div class="bio current">
+          <span class="stamp is-nope">DENIED</span>
+          <span class="stamp is-approved">LIKE</span>
+
+        <h3>Bandit, 7</h3>
+        <p>I'm looking for a dumpster-diving partner-in-crime.</p>
+        </div>
+        @foreach(Pet pet in Model)
+        {
+        <li class="card"> <span class="stamp is-nope">DENIED</span>          <span class="stamp is-approved">LIKE</span></li>
+        <div class="bio">
+        <h3>@pet.Name, @pet.Age
+          
+
+        </h3>
+      
+        <p>@pet.Bio</p>
+        </div>
+        
+        } 
       </ul>
-      <button class="but-nope">X</button>
-      <button class="but-yay">✔</button>
+      
+
+      <button class="but-nope" id="but-nope">X</button>
+      <button class="but-yay" id="but-yay">✔</button>
     </div>
 
   </section>
+
+
 
 <script src="tinderesque.js"></script>
 <script>

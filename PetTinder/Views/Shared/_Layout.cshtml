@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Take Meowt</title>
+    <title>@ViewData["Title"] - PetTinderMVC</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
         <link href="https://fonts.googleapis.com/css?family=Chicle&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/b60896eddd.js" crossorigin="anonymous"></script>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
@@ -41,7 +42,7 @@
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Index"
-                                    href="\Account">Logout</a>
+                                    href="\Account"><i class="fas fa-sign-out-alt"></i></a>
                                 }
                                 @if (!User.Identity.IsAuthenticated)
                                 {
@@ -61,7 +62,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top bg-white footer text-muted">
         <div class="container">
             &copy; 2019 - Take Meowt - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

@@ -15,7 +15,7 @@ using System;
 
 namespace PetTinder.Controllers
 {
-    [Authorize]
+    // [Authorize]
     public class PetsController : Controller
     {
         private readonly PetTinderContext _db;
@@ -31,7 +31,8 @@ namespace PetTinder.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var allPets = _db.Pets.ToList();
+            return View(allPets);        
         }
 
         public ActionResult Create()
