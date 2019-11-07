@@ -32,35 +32,31 @@
    
    @if(String.IsNullOrEmpty(@Model.Photo1))
    {
-   
-    <label for="file">Upload Image:</label>  
-    <input type="file" name="Photo1" id="Photo1"/><br><br>  
-       
+    <label for="file1">Upload Image:</label>  
+    <input type="file" asp-for="file1" name="file1" id="file1"/><br><br>  
    } 
- 
     <br><br>  
+
    @if(String.IsNullOrEmpty(@Model.Photo2))
    {
-    <label for="file">Upload Image:</label>  
-    <input type="file" name="Photo2" id="Photo2"/><br><br>  
+    <label for="file2">Upload Image:</label>  
+    <input type="file" asp-for="file2" name="file2" id="file2"/><br><br>  
    }
     <br><br> 
 
    @if(String.IsNullOrEmpty(@Model.Photo3))
    {
-    <label for="file">Upload Image:</label>  
-    <input type="file" name="Photo3" id="Photo3"/><br><br>  
+    <label for="file3">Upload Image:</label>  
+    <input type="file" asp-for="file3" name="file3" id="file3"/><br><br>  
    }
     <br><br> 
 
    @if(String.IsNullOrEmpty(@Model.Photo4))
    {
-    <label for="file">Upload Image:</label>  
-    <input type="file" name="Photo4" id="Photo4"/><br><br>  
+    <label for="file4">Upload Image:</label>  
+    <input type="file" asp-for="file4" name="file4" id="file4"/><br><br>  
    }
-    @*<input type="submit" value="Upload Images"/>  *@
     <br><br> 
-
 
     <input type="submit" class = "btn btn-primary" value="Save Changes" />
 }
