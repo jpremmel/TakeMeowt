@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +14,6 @@ namespace PetTinder.Controllers
 {
     public class HomeController : Controller
     {
-
-
-
         private readonly PetTinderContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHostingEnvironment _hostingEnvironment;
@@ -25,12 +24,12 @@ namespace PetTinder.Controllers
             _db = db;
             _hostingEnvironment = environment;
         }
-
-
-
+        [Authorize]
         public IActionResult Index()
         {
-            var allPets = _db.Pets.ToList();
-            return View(allPets);        }
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var allPets = _db.Pets.Where(p=>p.User.Id != userId).ToList();
+            return View(allPets);        
+        }
     }
 }

@@ -1,11 +1,4 @@
-﻿// (function(){
-// ("#but-nope").click(function(){
-//     ('.is-nope').show();
-// });
-// });
-
-
-(function () {
+﻿(function () {
     var animating = false;
 
     function animatecard(ev) {
@@ -77,9 +70,12 @@
                 origin.querySelector('.bio').remove();
                 if (!origin.querySelector('.card')) {
                     fireCustomEvent('deckempty', {
+                        
                         origin: origin.querySelector('button'),
                         container: origin,
-                        card: null
+                        card: null,
+                        
+
                     });
                 } else {
                     origin.querySelector('.card').classList.add('current');
