@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-using System.Drawing;
 using System;
 
 namespace PetTinder.Controllers
@@ -35,6 +34,24 @@ namespace PetTinder.Controllers
             return View(allPets);        
         }
 
+        public async Task<IActionResult> Details()
+        {
+            //Find the pet that belongs to the currently logged in user and pass it to the Details view
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
+            if (pet != null)
+            {
+                return View(pet);
+            }
+            else
+            {
+                return RedirectToAction("Create");
+            }
+        }
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
+
         public ActionResult Create()
         {
             return View();
@@ -47,6 +64,8 @@ namespace PetTinder.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             pet.User = currentUser;
+            _db.Pets.Add(pet);
+            _db.SaveChanges();
 
             //Create photo directory in "uploads" folder for the pet that was just created
             var photoDirectory = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
@@ -55,10 +74,11 @@ namespace PetTinder.Controllers
             //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
             var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
 
-            if (file1 != null)
+            //Picture 1
+            try
             {
                 var guid1 = Guid.NewGuid().ToString();
-                string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
+                string photoPath1 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo1))
                 {
                     pet.Photo1 = photoPath1;
@@ -67,16 +87,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file1.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file1.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid1}{file1.FileName}"), FileMode.Create))
                     {
                         await file1.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file2 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 1 <<<<<<<<<<<<");
+            }
+            
+            //Picture 2
+            try
             {
                 var guid2 = Guid.NewGuid().ToString();
-                string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
+                string photoPath2 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo2))
                 {
                     pet.Photo2 = photoPath2;
@@ -85,16 +111,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file2.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file2.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid2}{file2.FileName}"), FileMode.Create))
                     {
                         await file2.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file3 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 2 <<<<<<<<<<<<");
+            }
+            
+            //Picture 3
+            try
             {
                 var guid3 = Guid.NewGuid().ToString();
-                string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
+                string photoPath3 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo3))
                 {
                     pet.Photo3 = photoPath3;
@@ -103,16 +135,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file3.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file3.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid3}{file3.FileName}"), FileMode.Create))
                     {
                         await file3.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file4 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 3 <<<<<<<<<<<<");
+            }
+            
+            //Picture 4
+            try
             {
                 var guid4 = Guid.NewGuid().ToString();
-                string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
+                string photoPath4 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo4))
                 {
                     pet.Photo4 = photoPath4;
@@ -121,17 +159,20 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file4.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file4.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid4}{file4.FileName}"), FileMode.Create))
                     {
                         await file4.CopyToAsync(fileStream);
                     }
                 }
             }
-
-            _db.Pets.Add(pet);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 4 <<<<<<<<<<<<");
+            }
+            return RedirectToAction("Details");
         }
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EDIT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 
         public async Task<IActionResult> Edit()
         {
@@ -145,13 +186,16 @@ namespace PetTinder.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Pet pet, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
+            System.Console.WriteLine("Photo 1: " + pet.Photo1);
+            
             //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
             var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
 
-            if (file1 != null)
+            //Picture 1
+            try
             {
                 var guid1 = Guid.NewGuid().ToString();
-                string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
+                string photoPath1 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo1))
                 {
                     pet.Photo1 = photoPath1;
@@ -160,16 +204,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file1.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file1.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid1}{file1.FileName}"), FileMode.Create))
                     {
                         await file1.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file2 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 1 <<<<<<<<<<<<");
+            }
+            
+            //Picture 2
+            try
             {
                 var guid2 = Guid.NewGuid().ToString();
-                string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
+                string photoPath2 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo2))
                 {
                     pet.Photo2 = photoPath2;
@@ -178,16 +228,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file2.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file2.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid2}{file2.FileName}"), FileMode.Create))
                     {
                         await file2.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file3 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 2 <<<<<<<<<<<<");
+            }
+            
+            //Picture 3
+            try
             {
                 var guid3 = Guid.NewGuid().ToString();
-                string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
+                string photoPath3 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo3))
                 {
                     pet.Photo3 = photoPath3;
@@ -196,16 +252,22 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file3.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file3.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid3}{file3.FileName}"), FileMode.Create))
                     {
                         await file3.CopyToAsync(fileStream);
                     }
                 }
             }
-            if (file4 != null)
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 3 <<<<<<<<<<<<");
+            }
+            
+            //Picture 4
+            try
             {
                 var guid4 = Guid.NewGuid().ToString();
-                string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
+                string photoPath4 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo4))
                 {
                     pet.Photo4 = photoPath4;
@@ -214,156 +276,19 @@ namespace PetTinder.Controllers
                 _db.SaveChanges();
                 if(file4.Length > 0)
                 {
-                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file4.FileName}"), FileMode.Create))
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid4}{file4.FileName}"), FileMode.Create))
                     {
                         await file4.CopyToAsync(fileStream);
                     }
                 }
-            }            
+            }
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 4 <<<<<<<<<<<<");
+            }
             _db.Entry(pet).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Details");
         }
-
-        public async Task<IActionResult> Details()
-        {
-            //Find pet that belongs to the currently logged in user and pass it to the Details view
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
-            return View(pet);
-        }
-
-        // //UPLOAD PHOTO
-        // [HttpPost]
-        // public async Task<IActionResult> Upload([FromForm] IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
-        // {
-        //     //Find pet that belongs to the currently logged in user
-        //     var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //     var currentUser = await _userManager.FindByIdAsync(userId);
-        //     Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
-
-        //     //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
-        //     var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
-
-        //     if (file1 != null)
-        //     {
-        //         var guid1 = Guid.NewGuid().ToString();
-        //         string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
-        //         if (String.IsNullOrEmpty(pet.Photo1))
-        //         {
-        //             pet.Photo1 = photoPath1;
-        //         }
-        //         _db.Entry(pet).State = EntityState.Modified;
-        //         _db.SaveChanges();
-        //         if(file1.Length > 0)
-        //         {
-        //             using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file1.FileName}"), FileMode.Create))
-        //             {
-        //                 await file1.CopyToAsync(fileStream);
-        //             }
-        //         }
-        //     }
-        //     if (file2 != null)
-        //     {
-        //         var guid2 = Guid.NewGuid().ToString();
-        //         string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
-        //         if (String.IsNullOrEmpty(pet.Photo2))
-        //         {
-        //             pet.Photo2 = photoPath2;
-        //         }
-        //         _db.Entry(pet).State = EntityState.Modified;
-        //         _db.SaveChanges();
-        //         if(file2.Length > 0)
-        //         {
-        //             using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file2.FileName}"), FileMode.Create))
-        //             {
-        //                 await file2.CopyToAsync(fileStream);
-        //             }
-        //         }
-        //     }
-        //     if (file3 != null)
-        //     {
-        //         var guid3 = Guid.NewGuid().ToString();
-        //         string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
-        //         if (String.IsNullOrEmpty(pet.Photo3))
-        //         {
-        //             pet.Photo3 = photoPath3;
-        //         }
-        //         _db.Entry(pet).State = EntityState.Modified;
-        //         _db.SaveChanges();
-        //         if(file3.Length > 0)
-        //         {
-        //             using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file3.FileName}"), FileMode.Create))
-        //             {
-        //                 await file3.CopyToAsync(fileStream);
-        //             }
-        //         }
-        //     }
-        //     if (file4 != null)
-        //     {
-        //         var guid4 = Guid.NewGuid().ToString();
-        //         string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
-        //         if (String.IsNullOrEmpty(pet.Photo4))
-        //         {
-        //             pet.Photo4 = photoPath4;
-        //         }
-        //         _db.Entry(pet).State = EntityState.Modified;
-        //         _db.SaveChanges();
-        //         if(file4.Length > 0)
-        //         {
-        //             using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file4.FileName}"), FileMode.Create))
-        //             {
-        //                 await file4.CopyToAsync(fileStream);
-        //             }
-        //         }
-        //     }            
-        //     return RedirectToAction("Details");
-        // }
-
-        //UPLOAD PHOTO
-        [HttpPost("{id}/upload")]
-        public async Task<IActionResult> Upload([FromForm] IFormFile file)
-        {
-            //Find pet that belongs to the currently logged in user
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
-
-            //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
-            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
-            //Create GUID and append it to file name to make sure file names of uploaded photos are unique
-            var guid = Guid.NewGuid().ToString();
-            string photoPath = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid}{file.FileName}";
-            //Save photo path string to pet's Photo1, Photo2, Photo3, or Photo4 property (whichever is null or empty)
-            if (String.IsNullOrEmpty(pet.Photo1))
-            {
-                pet.Photo1 = photoPath;
-            }
-            else if (String.IsNullOrEmpty(pet.Photo2))
-            {
-                pet.Photo2 = photoPath;
-            }
-            else if (String.IsNullOrEmpty(pet.Photo3))
-            {
-                pet.Photo3 = photoPath;
-            }
-            else if (String.IsNullOrEmpty(pet.Photo4))
-            {
-                pet.Photo4 = photoPath;
-            }
-            _db.Entry(pet).State = EntityState.Modified;
-            _db.SaveChanges();
-            //Save file to local project uploads directory
-            if (file.Length > 0)
-            {
-                using (var fileStream = new FileStream(Path.Combine(uploads, $"{guid}{file.FileName}"), FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
-            }
-            return RedirectToAction("Details");
-        }
-
     }
 }
