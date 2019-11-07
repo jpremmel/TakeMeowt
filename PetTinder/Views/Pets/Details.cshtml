@@ -1,14 +1,27 @@
 
 @model PetTinder.Models.Pet
-
-<h1>Details page</h1>
-
-<h2>@Model.Name</h2>
-<h4>Age: @Model.Age</h4>
-<h4>Gender: @Model.Gender</h4>
-<h4>Bio: @Model.Bio</h4>
-<h4>Species: @Model.Species</h4>
-<h4>Breed: @Model.Breed</h4>
-<h4>Looking For: @Model.LookingFor</h4>
-
-@Html.ActionLink("Edit Profile", "Edit")
+<div class="container">
+    <h1>@Model.Name's Profile</h1>
+    <div class= "row">
+        <div class= "col-md-8">
+            <img src=~/@Model.Photo1 height="800" width="600">
+        </div>
+        <div class="col-md-4 profile">
+            <h2>@Model.Name</h2>
+            <br>
+            <h4>Age: @Model.Age</h4>
+            <br>
+            <h4>Gender: @Model.Gender</h4>
+            <br>
+            <h4>Bio: @Model.Bio</h4>
+            <br>
+            <h4>Species: @Model.Species</h4>
+            <br>
+            <h4>Breed: @Model.Breed</h4>
+            <br>
+            <h4>Looking For: @Model.LookingFor</h4>
+            <br>
+            @Html.ActionLink("Edit Profile", "Edit")
+        </div>
+    </div>
+</div>

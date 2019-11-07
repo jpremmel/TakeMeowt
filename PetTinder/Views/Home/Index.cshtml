@@ -1,15 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="container">
-@{
-    ViewData["Title"] = "Take Meowt";
-}
+﻿
 @using System.IO;
 @using PetTinder.Models;
 @using System.Collections.Generic;
 @model  List<PetTinder.Models.Pet>;
+
+<div class="container">
 
 <!DOCTYPE html>
 <html>
@@ -52,6 +47,7 @@
   </style>
 </head>
 <body>
+  
     @if (User.Identity.IsAuthenticated)
         {
         <section>
@@ -65,7 +61,7 @@
             <p>I'm looking for a dumpster-diving partner-in-crime.</p>
             </div>
             @foreach(Pet pet in Model)
-            {
+            { 
             <li class="card">
             <img src=~/@pet.Photo1 height="800" width="600">
             <span class="stamp is-nope">NOPE</span>
@@ -74,6 +70,7 @@
             <div class="bio">
             <h3>@pet.Name, @pet.Age</h3>
             <p>@pet.Bio</p>
+              
             </div> 
             } 
         </ul>
@@ -118,11 +115,11 @@
         document.body.addEventListener('deckempty', function(ev) {
             var container = ev.detail.container;
             var list = container.querySelector('.cardlist');
-            var out = '<li class="card current">#1</li>';
-            for (var i = 2; i < 6; i++) {
-            out += '<li class="card">#' + i + '</li>';
-            }
+            var out = '<li class="card current end">END</li>';
             list.innerHTML = out;
+            $('#but-nope').hide();
+            $('#but-yay').hide();
+
         });
         </script>
         }
