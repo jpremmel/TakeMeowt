@@ -61,7 +61,7 @@ namespace PetTinder.Controllers
             try
             {
                 var guid1 = Guid.NewGuid().ToString();
-                string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
+                string photoPath1 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo1))
                 {
                     pet.Photo1 = photoPath1;
@@ -85,7 +85,7 @@ namespace PetTinder.Controllers
             try
             {
                 var guid2 = Guid.NewGuid().ToString();
-                string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
+                string photoPath2 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo2))
                 {
                     pet.Photo2 = photoPath2;
@@ -109,7 +109,7 @@ namespace PetTinder.Controllers
             try
             {
                 var guid3 = Guid.NewGuid().ToString();
-                string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
+                string photoPath3 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo3))
                 {
                     pet.Photo3 = photoPath3;
@@ -133,7 +133,7 @@ namespace PetTinder.Controllers
             try
             {
                 var guid4 = Guid.NewGuid().ToString();
-                string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
+                string photoPath4 = $"uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
                 if (String.IsNullOrEmpty(pet.Photo4))
                 {
                     pet.Photo4 = photoPath4;
