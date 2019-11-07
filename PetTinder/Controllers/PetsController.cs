@@ -40,7 +40,14 @@ namespace PetTinder.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             Pet pet = _db.Pets.FirstOrDefault(p => p.User.Id == currentUser.Id);
-            return View(pet);
+            if (pet != null)
+            {
+                return View(pet);
+            }
+            else
+            {
+                return RedirectToAction("Create");
+            }
         }
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
