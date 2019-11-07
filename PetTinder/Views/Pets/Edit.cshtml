@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit ";
 }
 <h3>Edit Profile</h3>
-@using (Html.BeginForm(new { enctype="multipart/form-data"}))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype="multipart/form-data"}))
 {
     @Html.HiddenFor(model => model.PetId)
 
