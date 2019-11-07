@@ -58,68 +58,99 @@ namespace PetTinder.Controllers
             var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
 
             //Picture 1
-            var guid1 = Guid.NewGuid().ToString();
-            string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
-            if (String.IsNullOrEmpty(pet.Photo1))
+            try
             {
-                pet.Photo1 = photoPath1;
-            }
-            _db.Entry(pet).State = EntityState.Modified;
-            _db.SaveChanges();
-            if(file1.Length > 0)
-            {
-                using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid1}{file1.FileName}"), FileMode.Create))
+                var guid1 = Guid.NewGuid().ToString();
+                string photoPath1 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid1}{file1.FileName}";
+                if (String.IsNullOrEmpty(pet.Photo1))
                 {
-                    await file1.CopyToAsync(fileStream);
+                    pet.Photo1 = photoPath1;
+                }
+                _db.Entry(pet).State = EntityState.Modified;
+                _db.SaveChanges();
+                if(file1.Length > 0)
+                {
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid1}{file1.FileName}"), FileMode.Create))
+                    {
+                        await file1.CopyToAsync(fileStream);
+                    }
                 }
             }
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 1 <<<<<<<<<<<<");
+            }
+            
             //Picture 2
-            var guid2 = Guid.NewGuid().ToString();
-            string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
-            if (String.IsNullOrEmpty(pet.Photo2))
+            try
             {
-                pet.Photo2 = photoPath2;
-            }
-            _db.Entry(pet).State = EntityState.Modified;
-            _db.SaveChanges();
-            if(file2.Length > 0)
-            {
-                using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid2}{file2.FileName}"), FileMode.Create))
+                var guid2 = Guid.NewGuid().ToString();
+                string photoPath2 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid2}{file2.FileName}";
+                if (String.IsNullOrEmpty(pet.Photo2))
                 {
-                    await file2.CopyToAsync(fileStream);
+                    pet.Photo2 = photoPath2;
+                }
+                _db.Entry(pet).State = EntityState.Modified;
+                _db.SaveChanges();
+                if(file2.Length > 0)
+                {
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid2}{file2.FileName}"), FileMode.Create))
+                    {
+                        await file2.CopyToAsync(fileStream);
+                    }
                 }
             }
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 2 <<<<<<<<<<<<");
+            }
+            
             //Picture 3
-            var guid3 = Guid.NewGuid().ToString();
-            string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
-            if (String.IsNullOrEmpty(pet.Photo3))
+            try
             {
-                pet.Photo3 = photoPath3;
-            }
-            _db.Entry(pet).State = EntityState.Modified;
-            _db.SaveChanges();
-            if(file3.Length > 0)
-            {
-                using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid3}{file3.FileName}"), FileMode.Create))
+                var guid3 = Guid.NewGuid().ToString();
+                string photoPath3 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid3}{file3.FileName}";
+                if (String.IsNullOrEmpty(pet.Photo3))
                 {
-                    await file3.CopyToAsync(fileStream);
+                    pet.Photo3 = photoPath3;
+                }
+                _db.Entry(pet).State = EntityState.Modified;
+                _db.SaveChanges();
+                if(file3.Length > 0)
+                {
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid3}{file3.FileName}"), FileMode.Create))
+                    {
+                        await file3.CopyToAsync(fileStream);
+                    }
                 }
             }
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 3 <<<<<<<<<<<<");
+            }
+            
             //Picture 4
-            var guid4 = Guid.NewGuid().ToString();
-            string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
-            if (String.IsNullOrEmpty(pet.Photo4))
+            try
             {
-                pet.Photo4 = photoPath4;
-            }
-            _db.Entry(pet).State = EntityState.Modified;
-            _db.SaveChanges();
-            if(file4.Length > 0)
-            {
-                using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid4}{file4.FileName}"), FileMode.Create))
+                var guid4 = Guid.NewGuid().ToString();
+                string photoPath4 = $"wwwroot/uploads/{pet.Name.ToLower()}{pet.PetId}/{guid4}{file4.FileName}";
+                if (String.IsNullOrEmpty(pet.Photo4))
                 {
-                    await file4.CopyToAsync(fileStream);
+                    pet.Photo4 = photoPath4;
                 }
+                _db.Entry(pet).State = EntityState.Modified;
+                _db.SaveChanges();
+                if(file4.Length > 0)
+                {
+                    using(var fileStream = new FileStream(Path.Combine(uploads, $"{guid4}{file4.FileName}"), FileMode.Create))
+                    {
+                        await file4.CopyToAsync(fileStream);
+                    }
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                System.Console.WriteLine(">>>>>>>>> No picture 4 <<<<<<<<<<<<");
             }
             
             return RedirectToAction("Index");
