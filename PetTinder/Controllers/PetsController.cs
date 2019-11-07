@@ -179,6 +179,8 @@ namespace PetTinder.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Pet pet, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
+            System.Console.WriteLine("Photo 1: " + pet.Photo1);
+            
             //Construct path string for where the photo will be saved: wwwroot/uploads/{petname}{petid}/
             var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", $"{pet.Name.ToLower()}{pet.PetId}");
 
