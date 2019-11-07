@@ -29,10 +29,15 @@ namespace PetTinder.Controllers
             _hostingEnvironment = environment;
         }
 
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            var allPets = _db.Pets.ToList();
-            return View(allPets);        
+            IndexViewModel model = new IndexViewModel();
+            model.Pets = _db.Pets.ToList();
+            foreach (Pet pet in model.Pets)
+            {
+                model.RightSwipes.Add(false);
+            }
+            return View(model);
         }
 
         public async Task<IActionResult> Details()

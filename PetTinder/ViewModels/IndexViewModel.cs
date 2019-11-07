@@ -10,8 +10,8 @@ namespace PetTinder.ViewModels
 
         public IndexViewModel()
         {
-            this.Pets = new List<Pet> {};
-            this.RightSwipes = new List<bool> {};
+            Pets = new List<Pet> { };
+            RightSwipes = new List<bool> { };
         }
     }
 }
