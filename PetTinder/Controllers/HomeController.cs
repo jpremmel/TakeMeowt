@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PetTinder.Models;
+using PetTinder.ViewModels;
 
 namespace PetTinder.Controllers
 {
     public class HomeController : Controller
     {
-
-
 
         private readonly PetTinderContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -26,11 +25,11 @@ namespace PetTinder.Controllers
             _hostingEnvironment = environment;
         }
 
-
-
         public IActionResult Index()
         {
-            var allPets = _db.Pets.ToList();
-            return View(allPets);        }
+            IndexViewModel model = new IndexViewModel();
+            model.Pets = _db.Pets.ToList();
+            return View(model);  
+        }
     }
 }

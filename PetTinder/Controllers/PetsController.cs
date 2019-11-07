@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System;
+using PetTinder.ViewModels;
 
 namespace PetTinder.Controllers
 {
@@ -50,7 +51,26 @@ namespace PetTinder.Controllers
             }
         }
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> VIEWMODEL <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
+
+        [HttpPost]
+        public ActionResult Inbox(IndexViewModel model)
+        {
+            System.Console.WriteLine("----------- WE ARE HERE --------------");
+            foreach(bool b in model.RightSwipes)
+            {
+                System.Console.WriteLine(">>>>>>>>>>>> " + b);
+            }
+            
+
+
+
+
+            return RedirectToAction("Details");
+        }
+
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CREATE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 
         public ActionResult Create()
         {

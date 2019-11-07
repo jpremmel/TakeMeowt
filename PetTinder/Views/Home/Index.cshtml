@@ -8,8 +8,9 @@
 }
 @using System.IO;
 @using PetTinder.Models;
+@using PetTinder.ViewModels;
 @using System.Collections.Generic;
-@model  List<PetTinder.Models.Pet>;
+@model PetTinder.ViewModels.IndexViewModel;
 
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
         <h3>Bandit, 7</h3>
         <p>I'm looking for a dumpster-diving partner-in-crime.</p>
         </div>
-        @foreach(Pet pet in Model)
+        @foreach(Pet pet in Model.Pets)
         {
         <li class="card">
           <img src=~/@pet.Photo1 height="800" width="600">
@@ -81,14 +82,20 @@
       
         <p>@pet.Bio</p>
         </div>
-        
+
+        Model.RightSwipes.Add(true);
         } 
       </ul>
       
 
-      <button class="but-nope" id="but-nope">X</button>
-      <button class="but-yay" id="but-yay">✔</button>
+      <button class="but-nope" id="but-nope" value="false">X</button>
+      <button class="but-yay" id="but-yay" value="true">✔</button>
     </div>
+
+    @using (Html.BeginForm("Inbox", "Pets", Model))
+    {
+      <input type="submit" class="btn btn-primary" value="Save My Swipes">
+    }
 
   </section>
 
