@@ -47,21 +47,21 @@
                     </ul>
                 </div>
 
-                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Create" asp-action="Create" href="\Pets\Create"><i class="fas fa-user-plus"></i></a>
+                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Create" asp-action="Create" href="\Pets\Create"><i class="fas fa-user-plus fa-lg"></i></a>
 
-                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Details" asp-action="Details" href="\Pets\Details"><i class="fas fa-user-alt"></i></a>
+                 <a class="navbar-brand nav-profile-logo" asp-area="" asp-controller="Details" asp-action="Details" href="\Pets\Details"><i class="fas fa-user-alt fa-lg"></i></a>
                 <div id="login">
                         <ul class="navbar-nav flex-grow-1 mr-auto nav-profile-logo">
                             <li class="nav-item">
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                 <a class="nav-link text-dark nav-profile-logo" asp-area="" asp-controller="Index"
-                                    href="\Account"><i class="fas fa-sign-out-alt"></i></a>
+                                    href="\Account"><i class="fas fa-sign-out-alt fa-lg"></i></a>
                                 }
                                 @if (!User.Identity.IsAuthenticated)
                                 {
                                 <a class="nav-link text-dark nav-profile-logo" asp-area="" asp-controller="Index"
-                                    href="\Account"><i class="fas fa-sign-in-alt"></i></a>
+                                    href="\Account"><i class="fas fa-sign-in-alt fa-lg"></i></a>
                                 }
                             </li>
                         </ul>

@@ -60,6 +60,7 @@
             <h3>Bandit, 7</h3>
             <p>I'm looking for a dumpster-diving partner-in-crime.</p>
             </div>
+            
             @foreach(Pet pet in Model)
             { 
             <li class="card">
@@ -78,7 +79,6 @@
         <button class="but-yay" id="but-yay">✔</button>
         </div>
         </section>
-        <script src="tinderesque.js"></script>
         <script>
         document.body.addEventListener('nopecard', function(ev) {
             console.log(ev.detail);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,9 @@ namespace PetTinder.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var allPets = _db.Pets.ToList();
-            return View(allPets);        }
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var allPets = _db.Pets.Where(p=>p.User.Id != userId).ToList();
+            return View(allPets);        
+        }
     }
 }
